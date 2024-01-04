@@ -1,7 +1,7 @@
 import { type RollupOptions } from "rollup";
 import dts from "rollup-plugin-dts";
 import esbuild from "rollup-plugin-esbuild";
-import pkg from "./package.json";
+import pkg from "./package.json" assert { type: "json" };
 
 const banner = `/**
  * ${pkg.name} v${pkg.version}
@@ -13,35 +13,35 @@ const banner = `/**
 `;
 
 const bundle = (config: RollupOptions): RollupOptions => ({
-  ...config,
-  input: "src/index.ts",
-  external: (id) => !/^[./]/.test(id),
+	...config,
+	input: "src/index.ts",
+	external: (id) => !/^[./]/.test(id),
 });
 
 export default [
-  bundle({
-    plugins: [esbuild()],
-    output: [
-      {
-        file: "./dist/index.js",
-        format: "cjs",
-        sourcemap: true,
-        banner,
-      },
-      {
-        file: "./dist/index.esm.js",
-        format: "es",
-        sourcemap: true,
-        banner,
-      },
-    ],
-  }),
-  bundle({
-    plugins: [dts()],
-    output: {
-      file: "./dist/index.d.ts",
-      format: "es",
-      banner,
-    },
-  }),
+	bundle({
+		plugins: [esbuild()],
+		output: [
+			{
+				file: "./dist/index.js",
+				format: "cjs",
+				sourcemap: true,
+				banner,
+			},
+			{
+				file: "./dist/index.esm.js",
+				format: "es",
+				sourcemap: true,
+				banner,
+			},
+		],
+	}),
+	bundle({
+		plugins: [dts()],
+		output: {
+			file: "./dist/index.d.ts",
+			format: "es",
+			banner,
+		},
+	}),
 ];
