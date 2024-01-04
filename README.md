@@ -1,1 +1,1 @@
-# client-js
+# @ermes-labs/client
