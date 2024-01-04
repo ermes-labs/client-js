@@ -22,3 +22,9 @@ jobs:
       - run: pnpm install
       - run: pnpm run check-ci
       - run: pnpm run build
+      - run: pnpm run coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/coverage-final.json

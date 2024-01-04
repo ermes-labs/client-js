@@ -11,7 +11,8 @@
     "lint": "biome lint src/**",
     "check": "biome check --apply --verbose ./src/** ./*.*",
     "check-ci": "biome ci src/** ./*.*",
-    "test": "vitest --coverage",
+    "test": "vitest",
+    "coverage": "vitest --coverage",
     "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript"
   },
   "keywords": [
