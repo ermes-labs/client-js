@@ -1,8 +1,11 @@
 {
+  "include": ["src/**/*", "rollup.config.ts"],
   "compilerOptions": {
+    "strict": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "target": "esnext"
+    "target": "esnext",
+    "module": "esnext"
   }
 }
