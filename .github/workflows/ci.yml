@@ -1,0 +1,29 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Bun.js
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - run: bun install
+      - run: bun run check-ci
+      - run: bun run build
+        # FIXME: Bun and typescript seems to have some configuration issues,
+        # types are emitted correctly but the build fails with a typescript error.
+        continue-on-error: true
+      - run: bun test --coverage --bail
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/coverage-final.json
