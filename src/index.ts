@@ -1,26 +1,27 @@
-import type { SessionToken } from "@ermes-labs/api";
-
-export type { SessionToken } from "@ermes-labs/api";
+export type SessionToken = {
+  host: string;
+  sessionId: string;
+};
 
 export type ErmesClientOptions =
   | {
-      // The name of the header that contains the session token.
-      tokenHeaderName?: string;
-    }
+    // The name of the header that contains the session token.
+    tokenHeaderName?: string;
+  }
   | {
-      // The name of the header that contains the session token.
-      tokenHeaderName?: string;
-      // The initial origin of the Ermes server.
-      initialOrigin: string | URL;
-    }
+    // The name of the header that contains the session token.
+    tokenHeaderName?: string;
+    // The initial origin of the Ermes server.
+    initialOrigin: string | URL;
+  }
   | {
-      // The name of the header that contains the session token.
-      tokenHeaderName?: string;
-      // The initial session token that the client should use.
-      initialToken: SessionToken;
-      // The scheme to use when connecting to the Ermes server.
-      scheme?: "http" | "https";
-    };
+    // The name of the header that contains the session token.
+    tokenHeaderName?: string;
+    // The initial session token that the client should use.
+    initialToken: SessionToken;
+    // The scheme to use when connecting to the Ermes server.
+    scheme?: "http" | "https";
+  };
 
 export class ErmesClient {
   // The default name of the header that contains the session token.

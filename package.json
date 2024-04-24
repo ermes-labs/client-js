@@ -1,6 +1,6 @@
 {
   "name": "@ermes-labs/client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "homepage": "https://ermes-labs.github.io/docs",
   "type": "module",
@@ -20,6 +20,9 @@
     "test": "bun run test",
     "coverage": "bun run test --coverage"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "ermes"
   ],
@@ -31,7 +34,6 @@
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
-    "@ermes-labs/api": "^0.0.1",
     "@types/bun": "^1.0.8",
     "typescript": "^5.3.3"
   }
